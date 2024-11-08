@@ -1,2 +1,14 @@
-host
+- name: Ubuntu Servers
+  hosts: ubuntu
+  become: true
+  roles:
+    - ubuntu.elasticstack
+    - ubuntu.nagios
+    - ubuntu.monitoring
+
+- name: CentOS Servers
+  hosts: centos
+  become: true
+  roles:
+    - centos.lampstack
 
