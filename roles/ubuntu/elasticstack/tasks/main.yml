@@ -1,0 +1,71 @@
+# Elastic Stack
+- name: Install Elasticsearch
+  apt:
+      name: elasticsearch
+      state: present
+
+- name: Start and enable Elasticsearch
+  service:
+          name: elasticsearch
+          state: started
+          enabled: true
+
+- name: Install Kibana
+  apt:
+      name: kibana
+      state: present
+
+- name: Start and enable Kibana
+  service:
+          name: kibana
+          state: started
+          enabled: true
+
+- name: Install Logstash
+  apt:
+      name: logstash
+      state: present
+
+- name: Start and enable Logstash
+  service:
+          name: logstash
+          state: started
+          enabled: true
+
+##### **Monitoring Role (`roles/ubuntu/monitoring/tasks/main.yml`)**
+
+```yaml
+---
+# Monitoring tasks for Ubuntu
+- name: Install InfluxDB
+  apt:
+	name: influxdb
+	state: present
+
+- name: Start and enable InfluxDB
+  service:
+	name: influxdb
+	state: started
+	enabled: true
+
+- name: Install Prometheus
+  apt:
+	name: prometheus
+	state: present
+
+- name: Start and enable Prometheus
+  service:
+	name: prometheus
+	state: started
+	enabled: true
+
+- name: Install Grafana
+  apt:
+	name: grafana
+	state: present
+
+- name: Start and enable Grafana
+  service:
+	name: grafana-server
+	state: started
+	enabled: true
