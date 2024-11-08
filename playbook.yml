@@ -1,14 +1,14 @@
 - name: Ubuntu Servers
-  hosts: ubuntu
+  hosts: elasticstack
   become: true
   roles:
-    - ubuntu.elasticstack
-    - ubuntu.nagios
-    - ubuntu.monitoring
+#    - elasticstack
+#    - ubuntu.nagios
+#    - ubuntu.monitoring
 
 - name: CentOS Servers
-  hosts: centos
+  hosts: lampstack
   become: true
   roles:
-    - centos.lampstack
+    - lampstack
 

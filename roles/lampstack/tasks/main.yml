@@ -1,0 +1,64 @@
+- name: Install and configure LAMP stack (CentOS)
+  hosts: all
+  become: true
+  tasks:
+        - name: Install updates (CentOS)
+        tags: always
+        dnf:
+          update_only: yes
+          update_cache: yes
+        when: ansible_distribution == "CentOS"
+
+- name: Install Apache, PHP, and MariaDB (CentOS)
+  hosts: all
+  become: true
+  tasks:
+
+
+- name: Install Apache, PHP, and MariaDB (CentOS)
+  tags: apache, php, mariadb, centos
+  dnf:
+    name:
+      - httpd
+      - php
+      - mariadb-server
+      - php-mysqlnd
+    state: present
+  when: ansible_distribution == "CentOS"
+
+- name: Configure and start Apache and MariaDB services (CentOS)
+  hosts: all
+  become: true
+  tasks:
+        - name: Start and enable Apache service (CentOS)
+        tags: apache, centos
+        service:
+            name: httpd
+            state: started
+            enabled: true
+        when: ansible_distribution == "CentOS"
+
+        - name: Start and enable MariaDB service (CentOS)
+        tags: mariadb, centos
+        service:
+                name: mariadb
+                state: started
+                enabled: true
+        when: ansible_distribution == "CentOS"
+
+- name: Install PHP modules (CentOS)
+  hosts: all
+  become: true
+  tasks:
+
+        - name: Install PHP modules for CentOS
+        tags: php, centos
+        dnf:
+            name:
+                  - php-mysqlnd
+                  - php-cli
+                  - php-fpm
+                  - php-gd
+                  - php-mbstring
+            state: present
+        when: ansible_distribution == "CentOS"

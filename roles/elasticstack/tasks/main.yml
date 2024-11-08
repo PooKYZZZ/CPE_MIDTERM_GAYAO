@@ -1,32 +1,32 @@
 - name: Install Elasticsearch
   apt:
-	name: elasticsearch
-	state: present
+      name: elasticsearch
+      state: present
 
 - name: Start and enable Elasticsearch
   service:
-	name: elasticsearch
-	state: started
-	enabled: true
+          name: elasticsearch
+          state: started
+          enabled: true
 
 - name: Install Kibana
   apt:
-	name: kibana
-	state: present
+      name: kibana
+      state: present
 
 - name: Start and enable Kibana
   service:
-	name: kibana
-	state: started
-	enabled: true
+          name: kibana
+          state: started
+          enabled: true
 
 - name: Install Logstash
   apt:
-	name: logstash
-	state: present
+        name: logstash
+        state: present
 
 - name: Start and enable Logstash
   service:
-	name: logstash
-	state: started
-	enabled: true
+          name: logstash
+          state: started
+          enabled: true
